@@ -586,6 +586,12 @@ class TouchInput
 			}
 		}
 
+		if (!ClientPrefs.data.touchGestures)
+		{
+			swipeUp = swipeDown = swipeLeft = swipeRight = tap = dragging = false;
+			dragY = 0;
+		}
+
 		if (dragging && !hitboxEnabled)
 		{
 			dragHaptic += Math.abs(dragY);

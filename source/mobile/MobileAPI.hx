@@ -49,33 +49,9 @@ class MobileAPI
 		return #if android 'android' #elseif ios 'ios' #elseif windows 'windows' #elseif mac 'mac' #elseif linux 'linux' #else 'unknown' #end;
 	}
 
-	public static function vibrate(duration:Int = 100)
-	{
-		#if android
-		if (vibrateMethod == null) vibrateMethod = JNI.createStaticMethod(UTIL, 'vibrate', '(I)V');
-		vibrateMethod(duration);
-		#elseif ios
-		untyped __cpp__('psych_ios_vibrate({0})', duration);
-		#end
-	}
+	public static function vibrate(duration:Int = 100) {}
 
-	static var lastHapticTime:Float = -1;
-
-	public static function haptic(strength:Int = HAPTIC_LIGHT, minInterval:Float = 0)
-	{
-		if (!ClientPrefs.data.haptics) return;
-		var intensity:Float = ClientPrefs.data.hapticsIntensity;
-		if (intensity <= 0) return;
-		var now:Float = haxe.Timer.stamp();
-		if (minInterval > 0 && lastHapticTime >= 0 && now - lastHapticTime < minInterval) return;
-		lastHapticTime = now;
-		#if android
-		if (hapticMethod == null) hapticMethod = JNI.createStaticMethod(UTIL, 'haptic', '(II)V');
-		hapticMethod(strength, Math.round(intensity * 100));
-		#elseif ios
-		untyped __cpp__('psych_ios_haptic({0}, {1})', strength, intensity);
-		#end
-	}
+	public static function haptic(strength:Int = HAPTIC_LIGHT, minInterval:Float = 0) {}
 
 	public static function toast(text:String, longDuration:Bool = false)
 	{
