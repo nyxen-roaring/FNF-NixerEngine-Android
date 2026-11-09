@@ -1,4 +1,4 @@
-![PsychionalEngineLogo](docs/img/PsychEngineLogoTweak.png)
+![NixerlordlEngineLogo](docs/img/NixerEngineLogoTweak.png)
 
 > [!NOTE]
 > This repository is a **vibecoded** Android & iOS port of Psych Engine 1.0.4, made with AI assistance. See the [Mobile](#mobile-android--ios) section for details.
